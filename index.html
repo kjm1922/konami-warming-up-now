@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+<script defer src="//use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!-- D-Day -->
+
+<script language="Javascript">
+$(function() {
+	function d_day(y, m, d) {
+	var today = new Date();
+	var dday = new Date(y, m-1, d);
+	var time = Math.floor((dday.getTime()-today.getTime())/86400000)+1;
+	var $count = $(".day_count");
+
+	var time_txt = String(time);
+	var max = time_txt.length;
+
+	var img = function getImg() {
+		var joinimg = "";
+		for (var i = 0; i < max; i++) {
+			joinimg +='<img src="./data/img/b_'+time_txt.charAt(i)+'.png" />'; // Image URL
+			};
+			return joinimg;
+		};
+		$count.html(img)
+	};
+	d_day(2018,6,4) // D-Day
+});
+</script>
+
+
+<style>
+
+@font-face {
+font-family: PixelOperator-Bold;
+src: url("./data/css/PixelOperator-Bold.ttf") format('truetype'); /* FONT */
+}
+
+body {
+background-color: #000000;
+}
+
+.day_count {
+	width: 296px;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+display: inline-block;
+}
+
+.up {
+	font-family: PixelOperator-Bold;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	height: 0;
+        color:#BE881A;
+        text-shadow:3px 4px 2px #A35F09;
+	font-size : 250%;
+
+}
+
+.up > div {
+	display:inline-block;
+	text-align: left;
+}
+
+.down {
+        font-family: PixelOperator-Bold;
+	position: fixed;
+        bottom: 201px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color:#BE881A;
+        text-shadow:3px 4px 2px #A35F09;
+        font-size : 250%;
+
+}
+
+.down > div {
+        display:inline-block;
+        text-align: left;
+
+}
+
+.minfo {
+        font-family: PixelOperator-Bold;
+        position: fixed;
+        bottom: 310px;
+	left: 0;
+        right: 0;
+        text-align: center;
+        height: 0;
+        color:#5A6EEE;
+        text-shadow:3px 4px 2px #121A88;
+        font-size : 230%;
+
+}
+</style>
+
+<!-- audio on / off -->
+
+<script>
+function pause() {
+	var audio = document.getElementById("audio");
+	if (audio.paused) {
+	audio.play();
+	} else {
+	audio.pause();
+	audio.currentTime=0;
+	}
+}
+</script>
+
+<!-- class minfo blink -->
+
+<script>
+window.onload=function() {
+	var element = $(".minfo");
+	var shown = true;
+		setInterval(toggle, 500); //ms
+
+		function toggle() {
+			if(shown) {
+			element.hide();
+			shown = false;
+		} else {
+			element.show();
+			shown=true;
+		}
+	}
+}
+</script>
+
+<title>WARMING UP NOW</title>
+</head>
+<body>
+
+<audio id="audio" autoplay loop>
+	<source src="./data/music/Konami_Morning_Music_Short.mp3" type="audio/mp3"> <!-- Music URL -->
+Your browser does not support audio element
+</audio>
+
+<div class="up">WARMING UP NOW</div>
+
+<div class="day_count"></div>
+</div>
+
+<div class="minfo" onclick="pause()">PRESS MUSIC STOP / START</div>
+
+<div class="down">PRESENTED BY kjm1922</div>
+
+</body>
+</html>
+
