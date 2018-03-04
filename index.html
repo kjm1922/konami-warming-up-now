@@ -25,6 +25,9 @@ $(function() {
 	var img = function getImg() {
 		var joinimg = "";
 		for (var i = 0; i < max; i++) {
+				if (time_txt < 10) { //If less than 10 days...
+					joinimg+='<img src="./data/img/b_0.png" />';
+					};
 			joinimg +='<img src="./data/img/b_'+time_txt.charAt(i)+'.png" />'; // Image URL
 			};
 			return joinimg;
